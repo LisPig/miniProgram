@@ -1,0 +1,19 @@
+{
+  "name": "minikeepaccounts",
+  "version": "1.0.0",
+  "description": "这是云开发的快速启动指引，其中演示了如何上手使用云开发的三大基础能力：",
+  "main": "index.js",
+  "dependencies": {
+    "@miniprogram-component-plus/tabs": "^1.0.0",
+    "miniprogram-sm-crypto": "^0.2.1",
+    "weui-miniprogram": "^1.0.7"
+  },
+  "devDependencies": {
+    "mini-program-iconfont-cli": "^0.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

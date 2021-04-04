@@ -1,0 +1,60 @@
+<view class="page" data-weui-theme="{{theme}}">
+  <!-- <text>添加个人钱包，包括支付宝，微信，各大银行卡</text> -->
+  <view></view>
+  <view class="wallet-content" wx:if="{{walletList.length>0}}">
+    <view class="account-title">
+      <view class="weui-article__h2">虚拟账户</view>
+      <view class="weui-flex" wx:for="{{fictionAcc}}" wx:key="key">
+        <view class="weui-flex__item" data-item="{{item}}" bindtap="edit">        
+            <view><iconfont name="{{item.type_icon}}" size="30"></iconfont></view>
+            <view class="account">{{item.account}}</view>
+            <view class="money">{{item.sum_money}}</view>
+          
+        </view>
+      </view>
+    </view>
+    <view class="account-title">
+      <view class="weui-article__h2">现金账户</view>
+      <view class="weui-flex" wx:for="{{cashAcc}}" wx:key="key">
+        <view class="weui-flex__item" data-item="{{item}}" bindtap="edit">        
+            <view><iconfont name="{{item.type_icon}}" size="30"></iconfont></view>
+            <view class="account">{{item.account}}</view>
+            <view class="money">{{item.sum_money}}</view>
+          
+        </view>
+      </view>
+    </view>
+    <view class="account-title">
+      <view class="weui-article__h2">负债账户</view>
+      <view class="weui-flex" wx:for="{{debtAcc}}" wx:key="key">
+        <view class="weui-flex__item" data-item="{{item}}" bindtap="edit">        
+            <view><iconfont name="{{item.type_icon}}" size="30"></iconfont></view>
+            <view class="account">{{item.account}}</view>
+            <view class="money">{{item.sum_money}}</view>
+          
+        </view>
+      </view>
+    </view>
+    <view class="account-title">
+      <view class="weui-article__h2">投资账户</view>
+      <view class="weui-flex" wx:for="{{investmentAcc}}" wx:key="key">
+        <view class="weui-flex__item" data-item="{{item}}" bindtap="edit">        
+            <view><iconfont name="{{item.type_icon}}" size="30"></iconfont></view>
+            <view class="account">{{item.account}}</view>
+            <view class="money">{{item.sum_money}}</view>
+          
+        </view>
+      </view>
+    </view>
+
+      
+  </view>
+  <view class="kongqianbao" wx:else> 
+    <image class="nullWallet" src="/static/images/wallet/walletnull.png"></image>
+    <!-- <text class="tips">钱包空空</text> -->
+  </view>
+  <view class="add-icon">
+    <image  bindtap="add" class="add" src="/static/images/wallet/add.png"></image>
+  </view>
+</view>
+

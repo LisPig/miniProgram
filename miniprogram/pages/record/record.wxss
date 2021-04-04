@@ -1,0 +1,13 @@
+/* miniprogram/pages/record/record.wxss */
+/* .canvas {
+  width: 100%;
+  height: 200rdp;
+} */
+
+.canvas {
+  width: 750rpx;
+  height: 500rpx;
+}
+.canvas2{
+height: 400rpx;
+} 

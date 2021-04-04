@@ -1,0 +1,65 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/openapi/openapi",
+    "pages/openapi/serverapi/serverapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/im/im",
+    "pages/im/room/room",
+    "pages/wallet/wallet",
+    "pages/record/record",
+    "pages/my/my",
+    "pages/addWallet/addWallet",
+    "components/categoryIcon/categoryIcon",
+    "pages/categoryIcon_list/categoryIcon_list",
+    "pages/editRecord/editRecord",
+    "pages/editWallet/editWallet"
+  ],
+  "usingComponents": {
+    "iconfont": "/iconfont/iconfont"
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "代号：黄金国",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/images/index@select.png",
+        "selectedIconPath": "static/images/index.png"
+      },
+      {
+        "pagePath": "pages/wallet/wallet",
+        "text": "钱包",
+        "iconPath": "static/images/wallet@select.png",
+        "selectedIconPath": "static/images/wallet.png"
+      },
+      {
+        "pagePath": "pages/record/record",
+        "text": "记录",
+        "iconPath": "static/images/record@select.png",
+        "selectedIconPath": "static/images/record.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "static/images/my@select.png",
+        "selectedIconPath": "static/images/my.png"
+      }
+    ]
+  }
+}

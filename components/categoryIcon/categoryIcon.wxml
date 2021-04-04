@@ -1,0 +1,6 @@
+<!--components/categoryIcon/categoryIcon.wxml-->
+<view class="iconList">
+  <icon class="iconfont iconweibiaot"></icon>
+  
+</view>
+

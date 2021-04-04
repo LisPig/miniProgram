@@ -1,0 +1,48 @@
+.page{
+  height: 100%;
+  width: 100%;
+}
+.account-title{
+  
+}
+
+.weui-article__h3{
+  background-color: #c1c1c1;
+}
+
+.weui-flex__item{
+  display: flex;
+  align-items: center;
+}
+.money{
+  float: right;
+  margin-left: auto;
+}
+
+.add-icon{
+  z-index:999;
+}
+.add{
+  z-index:999;
+  height: 120rpx;
+  width: 120rpx;
+  position: absolute;
+  right: 0px;
+  bottom: 50px;
+}
+
+
+.kongqianbao{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.nullWallet{
+  height: 200rpx;
+  width: 200rpx;
+  display: flex;
+}
+.tips{
+  display: flex;
+}

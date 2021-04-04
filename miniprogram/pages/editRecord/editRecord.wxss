@@ -1,0 +1,9 @@
+/* miniprogram/pages/editRecord/editRecord.wxss */
+
+.operateBtn{
+  display: flex;
+}
+
+.weui-btn weui-btn_primary del{
+  background-color: red;
+}

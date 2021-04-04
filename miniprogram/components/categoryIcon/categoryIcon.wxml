@@ -1,0 +1,6 @@
+<!--components/categoryIcon/categoryIcon.wxml-->
+<view class="" wx:for="{{iconList}}" wx:key="key" wx:for-item="list">
+  <view data-name="{{list.name}}" bindtap="checkIcon">
+    <iconfont  model:name="{{list.name}}" size="30"></iconfont><text style="font-size:13px">{{list.textname}}</text>
+  </view>
+</view>
