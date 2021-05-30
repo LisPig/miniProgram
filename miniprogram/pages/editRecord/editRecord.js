@@ -11,6 +11,9 @@ Page({
     datalist:{},
     array: ['支付宝', '微信', '银行卡'],
     index:'',
+    type_icon:'',
+    expend_type:'',
+    classify_id:0,
   },
 
   /**
@@ -21,7 +24,19 @@ Page({
     console.log(list);
   this.setData({
     datalist: list,
+    type_icon:list.type_icon,
+    expend_type:list.expend_type,
+    classify_id:list.classify_id 
   })
+  },
+
+  walletAccount:function(){
+    util.request(api.editRecord,tempList,'POST').then(function(res){
+      console.log(res);
+      wx.switchTab({
+        url: "/pages/index/index"
+      });
+    })
   },
 
   bindPicker3Change: function(e) {
@@ -33,7 +48,7 @@ Page({
   },
   addIcon:function(){
     wx.navigateTo({
-      url: '/pages/categoryIcon_list/categoryIcon_list',
+      url: '/pages/typeIcon_list/typeIcon_list',
     })
   },
 
@@ -54,6 +69,7 @@ Page({
     tempList.expend_type = objData.expend_type;
     tempList.rmb = objData.rmb
     tempList.user_id = wx.getStorageSync('userInfo').user_id
+    tempList.type_icon = this.data.type_icon
     util.request(api.editRecord,tempList,'POST').then(function(res){
       console.log(res);
       wx.switchTab({
@@ -62,10 +78,12 @@ Page({
     })
   },
   delete:function(){
+    console.log("删除信息："+this.data.datalist);
     util.request(api.delRecord,{
       user_id:this.data.datalist.user_id,
       record_id:this.data.datalist.record_id,
       rmb:this.data.datalist.rmb,
+      expend_type:this.data.datalist.expend_type,
     },'GET').then(function(res){
       wx.switchTab({
         url: "/pages/index/index"
@@ -83,7 +101,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let type_icon = wx.getStorageSync('typename')
+    console.log(this.data.type_icon.name);
+    // this.data.datalist.expend_type = type_icon.type;
+    // this.data.datalist.type_icon = type_icon.name
+    this.setData({
+      type_icon:type_icon.name,
+      expend_type:type_icon.type
+    })
   },
 
   /**

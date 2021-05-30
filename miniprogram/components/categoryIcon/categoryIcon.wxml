@@ -1,6 +1,33 @@
 <!--components/categoryIcon/categoryIcon.wxml-->
-<view class="" wx:for="{{iconList}}" wx:key="key" wx:for-item="list">
+<!-- <view class="" wx:for="{{iconList}}" wx:key="key" wx:for-item="list">
   <view data-name="{{list.name}}" bindtap="checkIcon">
     <iconfont  model:name="{{list.name}}" size="30"></iconfont><text style="font-size:13px">{{list.textname}}</text>
+  </view>
+</view> -->
+
+<view class="page">
+  <view class="list" style="padding:10px">
+    <view class="">
+      <view style="font-size:18px;background-color: lavender;">虚拟</view>
+      <view bindtap="checkIcon" data-name="zhifubao"><iconfont model:name="zhifubao" size="30"></iconfont><text style="font-size:13px">支付宝</text></view>
+      <view bindtap="checkIcon" data-name="weixin"><iconfont model:name="weixin" size="30"></iconfont><text style="font-size:13px">微信</text></view>
+    </view>
+    <view class="">
+      <view style="font-size:18px;background-color: lavender;">现金</view>
+      <view bindtap="checkIcon" data-name="xianjin"><iconfont model:name="xianjin" size="30"></iconfont><text style="font-size:13px">现金</text></view>
+      <view bindtap="checkIcon" data-name="yinhangqia"><iconfont model:name="yinhangqia" size="30"></iconfont><text style="font-size:13px">银行卡</text></view>
+    </view>
+    <view class="">
+      <view style="font-size:18px;background-color: lavender;">负债</view>
+      <view bindtap="checkIcon" data-name="fuzhai"><iconfont model:name="fuzhai" size="30"></iconfont><text style="font-size:13px">个人欠款</text></view>
+      <view bindtap="checkIcon" data-name="weibiaoti-"><iconfont model:name="weibiaoti-" size="30"></iconfont><text style="font-size:13px">贷款</text></view>
+      <view bindtap="checkIcon" data-name="huabei"><iconfont model:name="huabei" size="30"></iconfont><text style="font-size:13px">花呗</text></view>
+      <view bindtap="checkIcon" data-name="jingdongbaitiao"><iconfont model:name="jingdongbaitiao" size="30"></iconfont><text style="font-size:13px">京东白条</text></view>
+    </view>
+    <view class="">
+      <view style="font-size:18px;background-color: lavender;">投资</view>
+      <view bindtap="checkIcon" data-name="jijin"><iconfont model:name="jijin" size="30"></iconfont><text style="font-size:13px">基金</text></view>
+      <view bindtap="checkIcon" data-name="zhinengjijin"><iconfont model:name="zhinengjijin" size="30"></iconfont><text style="font-size:13px">股票</text></view>
+    </view>
   </view>
 </view>

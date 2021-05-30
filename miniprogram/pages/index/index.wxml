@@ -6,7 +6,8 @@
   <view class="top">
     <view  class="page_top" style="{{backColor}}">
         <view class="eyeIcon"><image class="eyeCheck" bindtap="showNum" src="{{seeIcon}}"></image></view>
-        <view class="weui-flex top1"> 
+        <view class="weui-flex top1" style="justify-content: center" wx:if="{{sumcount==0 || sumcount == null}}"><view class="placeholder top2"><text class="sumtxt">请先添加钱包</text></view></view>
+        <view class="weui-flex top1" wx:else> 
             <view class="weui-flex__item"><view class="placeholder top2"><text class="sumtxt">总资产：</text></view></view>
             <view class="weui-flex__item">
               <view class="placeholder top3">
@@ -17,6 +18,7 @@
               </view>
             </view>
         </view>
+        
         <view class="weui-flex">
             <view class="weui-flex__item">
               <view class="placeholder two">
@@ -48,8 +50,9 @@
                     </view>
                     <view wx:for="{{todayOutlayList}}" wx:for-item="listOne" wx:key="key">
                       <view class="item-content" data-item="{{listOne}}" bindtap="edit">
-                        <view class="">消费类型：{{listOne.expend_type}}</view>
-                        <view class="">金额：{{listOne.rmb}}元</view>
+                        <view><iconfont name="{{listOne.type_icon}}" size="30" style="float:right"></iconfont></view>
+                        <view class="type_text">类型：{{listOne.expend_type}}</view>
+                        <view class="type_text">金额：{{listOne.rmb}}元</view>
                       </view>
                     </view>
                 </block>
@@ -123,17 +126,144 @@
 </view>
 
 <!-- 弹出窗口部分 -->
-  <view wx:if="{{ popover }}" class="back" bindtap="hide"></view>
-    <view wx:if="{{ popover }}" class="popover">
+  <view wx:if="{{ popover && activeTab==0 }}" class="back" bindtap="hide"></view>
+    <view wx:if="{{ popover  && activeTab==0 }}" class="popover">
       <form class="weui-form__control-area" bindsubmit='submit'>
         <view class="weui-cells__group weui-cells__group_form">
           <view class="weui-cells weui-cells_form">
+            <view class="weui-cell weui-cell_active" bindtap="addIcon">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">类型图标</label>
+              </view>
+              <view class="weui-cell__bd">
+                <iconfont name="{{icon_name}}" size="30" style="float:right" ></iconfont>
+              </view>
+              
+            </view>
             <view class="weui-cell weui-cell_active">
               <view class="weui-cell__hd">							
                   <label class="weui-label">消费类型</label>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="expend_Type" placeholder="填写本次消费类型" cursor-spacing="180px" placeholder-class="weui-input__placeholder" value="{{expend_Type}}" />
+                <input class="weui-input" name="expend_Type" placeholder="填写本次消费类型" cursor-spacing="180px" placeholder-class="weui-input__placeholder" value="{{type_name}}" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">金额</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="RMB" placeholder="0.00" type="number" cursor-spacing="140px" placeholder-class="weui-input__placeholder" value="{{RMB}}"/>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="saveBtn">
+          <button class="weui-btn weui-btn_primary" form-type="submit">确定</button>
+        </view>
+      </form>
+      
+    </view>
+
+    <view wx:if="{{ popover && activeTab==1 }}" class="back" bindtap="hide"></view>
+    <view wx:if="{{ popover  && activeTab==1 }}" class="popover">
+      <form class="weui-form__control-area" bindsubmit='submit'>
+        <view class="weui-cells__group weui-cells__group_form">
+          <view class="weui-cells weui-cells_form">
+            <view class="weui-cell weui-cell_active" bindtap="addIcon">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">类型图标</label>
+              </view>
+              <view class="weui-cell__bd">
+                <iconfont name="{{icon_name}}" size="30" style="float:right"></iconfont>
+              </view>
+              
+            </view>
+            <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">收入类型</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="expend_Type" placeholder="填写本次消费类型" cursor-spacing="180px" placeholder-class="weui-input__placeholder" value="{{type_name}}" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">金额</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="RMB" placeholder="0.00" type="number" cursor-spacing="140px" placeholder-class="weui-input__placeholder" value="{{RMB}}"/>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="saveBtn">
+          <button class="weui-btn weui-btn_primary" form-type="submit">确定</button>
+        </view>
+      </form>
+      
+    </view>
+
+    <view wx:if="{{ popover && activeTab==2 }}" class="back" bindtap="hide"></view>
+    <view wx:if="{{ popover  && activeTab==2 }}" class="popover">
+      <form class="weui-form__control-area" bindsubmit='submit'>
+        <view class="weui-cells__group weui-cells__group_form">
+          <view class="weui-cells weui-cells_form">
+            <view class="weui-cell weui-cell_active" bindtap="addIcon">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">类型图标</label>
+              </view>
+              <view class="weui-cell__bd">
+                <iconfont name="{{icon_name}}" size="30" style="float:right"></iconfont>
+              </view>
+              
+            </view>
+            <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">转账类型</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="expend_Type" placeholder="填写本次消费类型" cursor-spacing="180px" placeholder-class="weui-input__placeholder" value="{{type_name}}" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">金额</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="RMB" placeholder="0.00" type="number" cursor-spacing="140px" placeholder-class="weui-input__placeholder" value="{{RMB}}"/>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="saveBtn">
+          <button class="weui-btn weui-btn_primary" form-type="submit">确定</button>
+        </view>
+      </form>
+      
+    </view>
+
+    <view wx:if="{{ popover && activeTab==3 }}" class="back" bindtap="hide"></view>
+    <view wx:if="{{ popover  && activeTab==3 }}" class="popover">
+      <form class="weui-form__control-area" bindsubmit='submit'>
+        <view class="weui-cells__group weui-cells__group_form">
+          <view class="weui-cells weui-cells_form">
+            <!-- <view class="weui-cell weui-cell_active" bindtap="addIcon">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">类型图标</label>
+              </view>
+              <view class="weui-cell__bd">
+                <iconfont name="{{type_icon.name}}" size="30" style="float:right"></iconfont>
+              </view>             
+            </view> -->
+            <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+              <view class="weui-cell__hd">
+                <label class="weui-label" style="width: 4em">钱包账户</label>
+              </view>
+              <view class="weui-cell__bd">
+                  <picker bindchange="bindPicker3Change"  range="{{debtAccountList}}" name="index" value="{{index}}">
+                      <view class="weui-select">{{debtAccountList[index]}}</view>
+                  </picker>
               </view>
             </view>
             <view class="weui-cell weui-cell_active">

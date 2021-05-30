@@ -5,6 +5,9 @@
 .account-title{
   
 }
+.wallet-content{
+  padding:10px;
+}
 
 .weui-article__h3{
   background-color: #c1c1c1;

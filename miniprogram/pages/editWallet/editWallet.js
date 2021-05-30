@@ -92,7 +92,7 @@ Page({
     //this.data.iconname = wx.getStorageSync('iconname')
     //console.log(this.data.iconname.name);
     this.setData({
-      iconname:this.data.iconname,
+      iconname:wx.getStorageSync('iconname'),
       index:this.data.datalist.account_type
     })
   },

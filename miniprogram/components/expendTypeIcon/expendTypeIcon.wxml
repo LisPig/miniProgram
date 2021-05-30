@@ -1,0 +1,92 @@
+<view class="page">
+  <!-- 支出 -->
+  <view class="list" style="padding:10px" wx:if="{{activeTab == 0}}">
+    
+    <view style="font-size:18px;background-color: lavender;">日常</view>
+    <view class="flex_layout">
+      <view class="iconAttribute" bindtap="checkIcon" data-name="yinshi" data-type="一日三餐"><iconfont name="yinshi" size="30"></iconfont><text style="font-size:13px" >一日三餐</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="xiangyan" data-type="香烟"><iconfont name="xiangyan" size="30"></iconfont><text style="font-size:13px">香烟</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="lingshi" data-type="零食"><iconfont name="lingshi" size="40"></iconfont><text style="font-size:13px">零食</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="jiu"><iconfont name="jiu" size="30"></iconfont><text style="font-size:13px">酒</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="yinshi1" data-type="饮料"><iconfont name="yinshi1" size="30"></iconfont><text style="font-size:13px">饮料</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="ziyuan" data-type="话费充值"><iconfont name="ziyuan" size="30"></iconfont><text style="font-size:13px">话费充值</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="juhui" data-type="聚会"><iconfont name="juhui" size="30"></iconfont><text style="font-size:13px">聚会</text></view>
+    </view>
+    <view style="font-size:18px;background-color: lavender;">娱乐</view>
+    <view class="flex_layout">
+      <view class="iconAttribute" bindtap="checkIcon" data-name="youxi" data-type="游戏"><iconfont name="youxi" size="30"></iconfont><text style="font-size:13px">游戏</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="dianying" data-type="电影"><iconfont name="dianying" size="30"></iconfont><text style="font-size:13px">电影</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="shuma-shouji" data-type="电子产品"><iconfont name="shuma-shouji" size="40"></iconfont><text style="font-size:13px">电子产品</text></view>
+      
+    </view>
+    <view style="font-size:18px;background-color: lavender;">购物</view>
+    <view class="flex_layout">
+      <view class="iconAttribute" bindtap="checkIcon" data-name="yifu" data-type="衣服"><iconfont name="yifu" size="30"></iconfont><text style="font-size:13px">衣服</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="icon-15" data-type="裤子"><iconfont name="icon-15" size="30"></iconfont><text style="font-size:13px">裤子</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="xiezi" data-type="鞋子"><iconfont name="xiezi" size="30"></iconfont><text style="font-size:13px">鞋子</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="tushu" data-type="图书"><iconfont name="tushu" size="30"></iconfont><text style="font-size:13px">图书</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="26" data-type="淘宝其它"><iconfont name="26" size="30"></iconfont><text style="font-size:13px">淘宝其它</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="jingdongicon-" data-type="京东其它"><iconfont name="jingdongicon-" size="30"></iconfont><text style="font-size:13px">京东其它</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="electronics" data-type="电子数码"><iconfont name="electronics" size="30"></iconfont><text style="font-size:13px">电子数码</text></view>
+      
+    </view>
+    <view style="font-size:18px;background-color: lavender;">出行</view>
+    <view class="flex_layout">
+      <view class="iconAttribute" bindtap="checkIcon" data-name="qiche" data-type="打车"><iconfont name="qiche" size="30"></iconfont><text style="font-size:13px">打车</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="lvyouchuhang" data-type="飞机高铁"><iconfont name="lvyouchuhang" size="30"></iconfont><text style="font-size:13px">飞机高铁</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="Car" data-type="汽车费用"><iconfont name="Car" size="30"></iconfont><text style="font-size:13px">汽车费用</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="youfeixinxiguanli" data-type="加油费"><iconfont name="youfeixinxiguanli" size="30"></iconfont><text style="font-size:13px">加油费</text></view>
+      
+    </view>
+    <view style="font-size:18px;background-color: lavender;">投资</view>
+    <view class="flex_layout">
+      <view class="iconAttribute" bindtap="checkIcon" data-name="jijin" data-type="基金"><iconfont name="jijin" size="30"></iconfont><text style="font-size:13px">基金</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="zhinengjijin" data-type="股票"><iconfont name="zhinengjijin" size="30"></iconfont><text style="font-size:13px">股票</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="xianjin" data-type="其它投资"><iconfont name="xianjin" size="40"></iconfont><text style="font-size:13px">其它</text></view>
+      
+    </view>
+
+    <view style="font-size:18px;background-color: lavender;">医疗</view>
+    <view class="flex_layout">
+      <view class="iconAttribute" bindtap="checkIcon" data-name="yiliaoxiang" data-type="医药"><iconfont name="yiliaoxiang" size="30"></iconfont><text style="font-size:13px">医药</text></view>
+      
+    </view>
+    
+  </view>
+
+<!-- 收入 -->
+  <view class="list" style="padding:10px" wx:if="{{activeTab ==1}}">
+    
+    <view style="font-size:18px;background-color: lavender;">收入</view>
+    <view class="flex_layout">
+      <view class="iconAttribute" bindtap="checkIcon" data-name="gongzitiao" data-type="工资"><iconfont name="gongzitiao" size="30"></iconfont><text style="font-size:13px" >工资</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="touzi" data-type="投资"><iconfont name="touzi" size="30"></iconfont><text style="font-size:13px">投资</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="shejiaotubiao-69" data-type="炒币"><iconfont name="shejiaotubiao-69" size="30"></iconfont><text style="font-size:13px">炒币</text></view>
+     </view> 
+    
+  </view>
+
+<!-- 转账 -->
+  <view class="list" style="padding:10px" wx:if="{{activeTab ==2}}">
+    
+    <view style="font-size:18px;background-color: lavender;">转账</view>
+    <view class="flex_layout">
+      <view class="iconAttribute" bindtap="checkIcon" data-name="zhifubao" data-type="支付宝"><iconfont name="zhifubao" size="30"></iconfont><text style="font-size:13px" >支付宝</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="weixin" data-type="微信"><iconfont name="weixin" size="30"></iconfont><text style="font-size:13px">微信</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="weibiaoti-" data-type="银行卡"><iconfont name="weibiaoti-" size="30"></iconfont><text style="font-size:13px">银行卡</text></view>
+    </view>
+    
+  </view>
+
+  <!-- 还款 -->
+  <view class="list" style="padding:10px" wx:if="{{activeTab ==3}}">
+    
+    <view style="font-size:18px;background-color: lavender;">还款</view>
+    <view class="flex_layout">
+      <view class="iconAttribute" bindtap="checkIcon" data-name="jiekuan" data-type="借款"><iconfont name="jiekuan" size="30"></iconfont><text style="font-size:13px" >借款</text></view>
+      <view class="iconAttribute" bindtap="checkIcon" data-name="Car" data-type="车贷"><iconfont name="Car" size="30"></iconfont><text style="font-size:13px">车贷</text></view>
+      
+    </view>
+    
+  </view>
+</view>

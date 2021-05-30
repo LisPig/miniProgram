@@ -11,3 +11,9 @@
 .canvas2{
 height: 400rpx;
 } 
+.tempC{
+  display: flex;
+    justify-content: center;
+    align-items: cneter;
+    display: -webkit-flex;
+}

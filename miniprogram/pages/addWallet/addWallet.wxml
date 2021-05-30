@@ -37,6 +37,15 @@
               </view>
               
             </view>
+            <view class="weui-cell weui-cell_active weui-cell_switch">
+                <view class="weui-cell__bd">默认支付</view>
+                <view class="weui-cell__ft" bindtap="checkDefault" >
+                    <label class="weui-switch-cp" >
+                        <checkbox class="weui-switch-cp__input" value="false"  checked="{{checked}}"/>
+                        <view class="weui-switch-cp__box"></view>
+                    </label>
+                </view>
+            </view>
           </view>
         </view>
         <view class="saveBtn">

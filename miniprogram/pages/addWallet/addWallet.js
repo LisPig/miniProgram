@@ -12,7 +12,9 @@ Page({
     array: ['虚拟账户', '现金账户', '负债账户','投资账户'],
     accountType:'',
     capitalType:['存款','负债'],
-    iconname:''
+    iconname:'',
+    checked:false,
+    is_default:1,//默认否 | 0为是
   },
 
 
@@ -32,12 +34,21 @@ Page({
     });
     return false;
    }
+   if(this.data.is_default==0 && (e.detail.value.index=="2" || e.detail.value.index=="3")){
+    wx.showModal({
+      title: '提示',
+      content: '当前账户类型不支持默认支付',
+      showCancel: false
+    });
+    return false;
+   }
 
     util.request(api.addWallet,{
       account:e.detail.value.account,
       sum_money:e.detail.value.total,
       account_type:e.detail.value.index,
       type_icon:this.data.iconname.name,
+      is_default:this.data.is_default,
       user_id:wx.getStorageSync('userInfo').user_id
 
     },'POST').then(function(res){
@@ -60,6 +71,21 @@ Page({
     wx.navigateTo({
       url: '/pages/categoryIcon_list/categoryIcon_list',
     })
+  },
+  checkDefault:function(){
+    var Isdefault = this.data.checked;
+    if(Isdefault==false){
+      this.data.checked = true;
+      this.setData({
+        is_default:0
+      })
+    }else{
+      this.data.checked = false;
+      this.setData({
+        is_default:1
+      })
+    }
+    console.log(this.data.checked)
   },
   /**
    * 生命周期函数--监听页面加载

@@ -41,10 +41,15 @@ Page({
 
     swiperHeight: "",
     scrollLeft: 0,
-    navigation: ["网络电视", "LED电视", "油烟机", "空调", "平板电视", "变频空调", "家用空调", "1.5匹空调"],
 
-    // showSumcount:true,
+    showTotalDay:false,
+    
 
+    debtAccountList:[],//负债列表
+    debtAccount:'',//负债账户
+
+    icon_name:'',
+    type_name:'',
   },
 
   onLoad() {
@@ -52,6 +57,7 @@ Page({
     that.authLogin();
     console.log(this.data.userInfo.sum_money )
     that.getTodayList();  
+    //that.getTodayTotal();
     const tabs = [
       {
         title: '支出',
@@ -92,14 +98,6 @@ Page({
       sumcount:that.data.userInfo.sum_money,
       showSumcount:that.data.userInfo.sum_money,
     })
-    
-    // wx.getSystemInfo({
-    //   success: function(res) {
-    //     that.setData({
-    //       tabHeiaght: res.windowHeight
-    //     });
-    //   }
-    // });
   },
   start: ()=> {
     var random = Math.floor(Math.random() * 900000 + 100000)
@@ -110,7 +108,7 @@ Page({
   },
 
 
-  getTodayList:function(){
+  getTodayList:function(){//获取今日记录列表
     let that = this;
     var outlaylist=[];
     util.request(api.recordList,{
@@ -122,20 +120,31 @@ Page({
         outlaylist = res.data;
         that.setData({todayOutlayList: res.data})  
         console.log(that.data.todayOutlayList) 
-        that.getTodayTotal(outlaylist)
+
+        if(that.data.activeTab=="0"){//目前只计算支出
+          that.getTodayTotal(outlaylist)
+        }else{
+          return false;
+        }
+    
       }else{
         wx.showToast({
           title: res.errmsg,
           icon: 'error',
         })
       }
-      //that.setTableHeight()
     })
     
   },
-  getTodayTotal:function(outlaylist){
-    let total = 0;
-    let day =0;
+  getTodayTotal:function(outlaylist){//头部更新数据
+    let total = 0;//总资产
+    let day; //剩余天数
+    //let dayss = wx.getStorageSync('showDay')   
+    if(wx.getStorageSync('showDay')){
+      day = wx.getStorageSync('showDay');     
+    }else{
+      day = 0;
+    }
     for(var i=0;i<outlaylist.length;i++){
       total +=outlaylist[i].rmb;  
     }
@@ -145,7 +154,6 @@ Page({
     
     let levelColor = "background-color:#10aeff"
     const days = day
-    //console.log(50>days>=31)
     if(51<=days && days>=100){
       levelColor
     }else if(31<=days && days<50){
@@ -153,6 +161,8 @@ Page({
     }else{
       levelColor = "background-color:red"
     }
+
+    wx.setStorageSync('showDay', day);
     this.setData({
       todayTotal:total,
       day:day,
@@ -183,7 +193,7 @@ Page({
         })
       }
     ).exec()
-    that.onShow();
+    // that.onShow();
   },
   onReady: function () {
     var obj = this;
@@ -201,11 +211,15 @@ Page({
   },
 
 
-  onShow(){
+  onShow(e){
     this.getTodayList();
+    //console.lot(e.currentTarget.dataset.text.name) 
+    //this.data.type_icon = wx.getStorageSync('typename')
     this.setData({
       todayOutlayList:this.data.todayOutlayList,
-      sumcount:this.data.userInfo.sum_money
+      // type_icon:this.data.type_icon,
+      // type_txt:this.data.type_icon.type
+      //sumcount:this.data.userInfo.sum_money
     })
     //this.setTableHeight()
   },
@@ -257,26 +271,68 @@ Page({
       })
   },
 
+  //添加按钮触发事件
   show: function (e) {
+    let that = this;
+    if(this.data.activeTab == 3){
+      util.request(api.debtAccountList, {
+        user_id:this.data.userInfo.user_id,
+        
+      },"GET")
+      .then(function(res) {
+        console.log(res);
+        if(res.erron == 400){
+          wx.showModal({
+            title: '提示',
+            content: res.errmsg,
+            showCancel: false
+          });
+          return false;
+        }else{
+          
+          let temp =[];
+          for(var i=0;i<res.data.length;i++){
+            //temp.push(res.data[i].wallet_id,res.data[i].account);
+            temp.push(res.data[i].account);
+          }
+          that.setData({debtAccountList:temp})
+          console.log(that.data.debtAccountList)
+        }
+      })
+    }
     this.setData({
       popover: true,
       add:false
     })
   },
  
+  //弹窗隐藏
   hide: function (e) {
     this.setData({
       popover: false,
-      add:true
+      add:true,
+      type_name:'',
+      icon_name:'',
     })
   },
-
+//弹窗关闭
   close: function () {
     this.setData({
       popover: false,
-      add:true
+      add:true,
+      type_name:'',
+      icon_name:'',
     })
   },
+  //选择账户
+  bindPicker3Change: function(e) {
+    console.log("账户"+this.data.debtAccountList[e.detail.value]);
+    this.setData({
+      index: e.detail.value
+    })
+    this.data.debtAccount = this.data.debtAccountList[e.detail.value];
+  },
+  //提交
   submit:function(e){
     console.log(e.detail.value);
     console.log(this.data.activeTab)
@@ -314,23 +370,34 @@ Page({
 
      util.request(api.addRecord, {
        
-      expend_type:objData.expend_Type,
+      expend_type:objData.expend_Type?objData.expend_Type:this.data.debtAccount,
       user_id:this.data.userInfo.user_id,
       rmb:parseFloat(objData.RMB),
-      classify_id:parseInt(this.data.activeTab)
+      classify_id:parseInt(this.data.activeTab),
+      type_icon:this.data.icon_name,
+      debtAccount:this.data.debtAccount,
       
     },"POST")
     .then(function(res) {
+      if(res.errno=="400"){
+        wx.showModal({
+          title: '提示',
+          content: res.errmsg,
+          showCancel: false
+        });
+        return false;
+      }else{
+        console.log("添加成功"+res.data)
+      }
       
-      console.log("添加成功:"+res)
     }),
     this.setData({
       popover: false,
       add:true
     })
-    this.setTableHeight();
     this.onShow();
   },
+  //打开编辑记录页面
   edit:function(e){
     //console.log(e.currentTarget.dataset.item);
     let dataList = JSON.stringify(e.currentTarget.dataset.item)
@@ -338,6 +405,13 @@ Page({
       url: '/pages/editRecord/editRecord?dataList=' + dataList,
     })
   },
+  //添加图标跳转到图标页面
+  addIcon:function(){
+    wx.navigateTo({
+      url: '/pages/typeIcon_list/typeIcon_list?activeTab='+this.data.activeTab,
+    })
+  },
+  //检查用户
   authLogin:function(){
     this.data.userInfo = wx.getStorageSync('userInfo');
     let userinfo = this.data.userInfo;
@@ -373,14 +447,17 @@ Page({
       })
     //}
   },
-  setTableHeight() {
-    const query = wx.createSelectorQuery().in(this)
-    query.select('#tabsSwiper').boundingClientRect(rect => {
-      this.setData({
-        tabHeiaght: rect.height
-      })
-    }).exec();
-  },
+  // setTableHeight() {
+  //   const query = wx.createSelectorQuery().in(this)
+  //   query.select('#tabsSwiper').boundingClientRect(rect => {
+  //     this.setData({
+  //       tabHeiaght: rect.height
+  //     })
+  //   }).exec();
+  // },
+  onCheckIcon:function(e){
+    console.log(e.detail);
+  }
 
 })
 

@@ -4,7 +4,15 @@
           <view class="weui-cells weui-cells_form">
             <view class="weui-cell weui-cell_active">
               <view class="weui-cell__hd">							
-                  <label class="weui-label">消费类型</label>
+                  <label class="weui-label">记录分支</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="classify" placeholder="" placeholder-class="weui-input__placeholder" value="{{datalist.classify}}" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">类型</label>
               </view>
               <view class="weui-cell__bd">
                 <input class="weui-input" name="expend_type" placeholder="" placeholder-class="weui-input__placeholder" value="{{datalist.expend_type}}" />
@@ -12,7 +20,7 @@
             </view>
             <view class="weui-cell weui-cell_active">
               <view class="weui-cell__hd">							
-                  <label class="weui-label">消费金额</label>
+                  <label class="weui-label">金额</label>
               </view>
               <view class="weui-cell__bd">
                 <input class="weui-input" name="rmb" placeholder="0.00" type="number" placeholder-class="weui-input__placeholder" value="{{datalist.rmb}}"/>
@@ -20,7 +28,7 @@
             </view>
             <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
               <view class="weui-cell__hd">
-                <label class="weui-label" style="width: 4em">消费账户</label>
+                <label class="weui-label" style="width: 4em">钱包账户</label>
               </view>
               <view class="weui-cell__bd">
                   <picker bindchange="bindPicker3Change"  range="{{array}}" name="index" value="{{index}}">

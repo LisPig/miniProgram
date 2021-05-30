@@ -1,6 +1,6 @@
 Component({
   properties: {
-    // weibiaoti- | weixin | weixin1 | zhifubao
+    // jiekuan | touzi | shejiaotubiao-69 | gongzitiao | juhui | yinshi | youxi | gouwu | tushu | dianying | jiu | ziyuan | lingshi | qiche | xiangyan | yifu | electronics | yiliaoxiang | youfeixinxiguanli | shuma-shouji | dilanxianxingiconyihuifu_huabanfuben | jingdongicon- | Car | yinshi1 | digital | xiezi | yinshi2 | 26 | icon-15 | lvyouchuhang | jingdongbaitiao | jijin | yinhangqia | fuzhai | xianjin | zhinengjijin | huabei | weibiaoti- | weixin | weixin1 | zhifubao
     name: {
       type: String,
     },

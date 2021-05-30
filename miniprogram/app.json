@@ -6,7 +6,6 @@
     "pages/databaseGuide/databaseGuide",
     "pages/addFunction/addFunction",
     "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
     "pages/openapi/openapi",
     "pages/openapi/serverapi/serverapi",
     "pages/openapi/callback/callback",
@@ -20,7 +19,8 @@
     "components/categoryIcon/categoryIcon",
     "pages/categoryIcon_list/categoryIcon_list",
     "pages/editRecord/editRecord",
-    "pages/editWallet/editWallet"
+    "pages/editWallet/editWallet",
+    "pages/typeIcon_list/typeIcon_list"
   ],
   "usingComponents": {
     "iconfont": "/iconfont/iconfont"

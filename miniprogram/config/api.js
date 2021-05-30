@@ -1,6 +1,6 @@
 // 以下是业务服务器API地址
 // 本机开发时使用
-// var WxApiRoot = 'http://localhost:8080/wx/';
+ //var WxApiRoot = 'http://127.0.0.1:8080/';
 // 局域网测试使用
 var WxApiRoot = 'http://project.guyubao.com/';
 // 云平台部署时使用
@@ -12,6 +12,7 @@ module.exports = {
   IndexUrl: WxApiRoot + 'home/index', //首页数据接口
   recordList:WxApiRoot+'userRecordList',//用户当日记录列表
   userInfo:WxApiRoot + 'mpWXLogin',//自登录接口
+  debtAccountList:WxApiRoot + 'debtAccountList',//负债账户列表
 
   addRecord:WxApiRoot+'addRecord',//添加记账
   editRecord:WxApiRoot+'editRecord',//编辑记账记录

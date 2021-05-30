@@ -17,7 +17,14 @@ Component({
   data: {
     iconList:[{"name":"weixin","textname":"微信"},
               {"name":"zhifubao","textname":"支付宝"},
-              {"name":"weibiaoti-","textname":"银行卡"}
+              {"name":"jingdongbaitiao","textname":"京东白条"},
+              {"name":"jijin","textname":"基金"},
+              {"name":"yinhangqia","textname":"银行卡"},
+              {"name":"fuzhai","textname":"负债"},
+              {"name":"xianjin","textname":"现金"},
+              {"name":"zhinengjijin","textname":"智能基金"},
+              {"name":"huabei","textname":"花呗"},
+              {"name":"weibiaoti-","textname":"银行卡"},
               ],
     test:{"name":"weixin","textname":"微信"}
               

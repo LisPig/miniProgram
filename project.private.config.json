@@ -33,6 +33,18 @@
         {
           "name": "pages/record/record",
           "pathName": "pages/record/record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/typeIcon_list/typeIcon_list",
+          "pathName": "pages/typeIcon_list/typeIcon_list",
           "scene": null
         }
       ]

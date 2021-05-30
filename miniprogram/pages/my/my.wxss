@@ -22,7 +22,7 @@ page {
 }
 
 .userinfo {
-  padding-left: 120rpx;
+  padding-left: 60rpx;
 }
 
 .userinfo-avatar {
