@@ -1,0 +1,12 @@
+<!--miniprogram/pages/record/record.wxml-->
+<view class="container" >
+    <canvas canvas-id="pieCanvas" class="canvas" style="height:300px" disable-scroll="true"  bindtouchstart="touchHandler"></canvas>
+
+<canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas>
+<canvas canvas-id="columnCanvas" disable-scroll="true" class="canvas"></canvas>
+<canvas canvas-id="radarCanvas" disable-scroll="true" class="canvas canvas2"></canvas>
+<!-- <view class="container">
+    <canvas type="2d" id="pieCanvas" class="canvas" style="height:300px" bindtouchstart="touchHandler"></canvas>
+</view> -->
+</view>
+<!-- <view class="tempC" wx:else><text>暂无记录</text></view> -->

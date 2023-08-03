@@ -1,0 +1,63 @@
+<view class="page" data-weui-theme="{{theme}}">
+  <form class="weui-form__control-area" bindsubmit='submit'>
+        <view class="weui-cells__group weui-cells__group_form">
+          <view class="weui-cells weui-cells_form">
+            <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">记录分支</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="classify" placeholder="" placeholder-class="weui-input__placeholder" value="{{datalist.classify}}" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">类型</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="expend_type" placeholder="" placeholder-class="weui-input__placeholder" value="{{datalist.expend_type}}" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">金额</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="rmb" placeholder="0.00" type="digit" placeholder-class="weui-input__placeholder" value="{{datalist.rmb}}"/>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+              <view class="weui-cell__hd">
+                <label class="weui-label" style="width: 4em">钱包账户</label>
+              </view>
+              <view class="weui-cell__bd">
+                  <picker bindchange="bindPicker3Change"  range="{{array}}" name="index" value="{{index}}">
+                      <view class="weui-select">{{array[index]}}</view>
+                  </picker>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_active" bindtap="addIcon">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">类型图标</label>
+              </view>
+              <view class="weui-cell__bd">
+                <iconfont name="{{icon_name}}" size="30" style="float:right"></iconfont>
+              </view>
+              
+            </view>
+            <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">记录时间</label>
+              </view>
+              <view>{{datalist.create_date}}</view>
+            </view>
+            
+          </view>
+        </view>
+        <view class="operateBtn">
+          <view class="weui-flex__item"><button class="weui-btn weui-btn_primary del" style="background: #f34949;width:150px" form-type="delete" bindtap="delete">删除</button></view>
+          <view class="weui-flex__item"><button class="weui-btn weui-btn_primary" style="width:150px" form-type="submit">保存</button></view>
+        </view>
+        
+  </form>
+</view>

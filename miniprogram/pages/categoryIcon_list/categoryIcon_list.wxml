@@ -1,0 +1,2 @@
+<!--miniprogram/pages/categoryIcon_list/categoryIcon_list.wxml-->
+<categoryIcon bind:checkIcon="goBackData"></categoryIcon>>

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "categoryIcon":"/components/categoryIcon/categoryIcon"
+  }
+}

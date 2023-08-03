@@ -1,0 +1,5 @@
+/* components/categoryIcon/categoryIcon.wxss */
+.iconfont iconweibiaot{
+  height: 50px;
+  width: 50px;
+}

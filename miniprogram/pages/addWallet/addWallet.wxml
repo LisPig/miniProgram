@@ -1,0 +1,56 @@
+<view class="page" data-weui-theme="{{theme}}">
+  <form class="weui-form__control-area" bindsubmit='submit'>
+        <view class="weui-cells__group weui-cells__group_form">
+          <view class="weui-cells weui-cells_form">
+            <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">账户名</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="account" placeholder="请输入账户名" placeholder-class="weui-input__placeholder" value="{{account}}" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">总金额</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="total" placeholder="0.00" type="digit" placeholder-class="weui-input__placeholder" value="{{total}}"/>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+              <view class="weui-cell__hd">
+                <label class="weui-label" style="width: 4em">账户类型</label>
+              </view>
+              <view class="weui-cell__bd">
+                  <picker bindchange="bindPicker3Change"  range="{{array}}" name="index" value="{{index}}">
+                      <view class="weui-select">{{array[index]}}</view>
+                  </picker>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_active" bindtap="addIcon">
+              <view class="weui-cell__hd">							
+                  <label class="weui-label">添加图标</label>
+              </view>
+              <view class="weui-cell__bd">
+                <iconfont name="{{icon_name}}" size="30" style="float:right"></iconfont>
+              </view>
+              
+            </view>
+            <view class="weui-cell weui-cell_active weui-cell_switch">
+                <view class="weui-cell__bd">默认支付</view>
+                <view class="weui-cell__ft" bindtap="checkDefault" >
+                    <label class="weui-switch-cp" >
+                        <checkbox class="weui-switch-cp__input" value="false"  checked="{{checked}}"/>
+                        <view class="weui-switch-cp__box"></view>
+                    </label>
+                </view>
+            </view>
+          </view>
+        </view>
+        <view class="saveBtn">
+
+          <button class="weui-btn weui-btn_primary" form-type="submit">保存</button>
+      </view>
+  </form>
+</view>

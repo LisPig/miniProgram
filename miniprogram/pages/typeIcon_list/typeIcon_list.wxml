@@ -1,0 +1,1 @@
+<typeIcon activeTab="{{activeTab}}" bind:checkIcon="goBackData"></typeIcon>

@@ -1,0 +1,15 @@
+/* components/expendTypeIcon/expendTypeIcon.wxss */
+.flex_layout{
+  display: flex;
+  flex-direction: inherit;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  align-items: flex-end;
+  align-content: center;
+}
+
+.iconAttribute{
+  text-align: -webkit-center;
+  margin-right: 15px;
+  width: 55px;
+}
